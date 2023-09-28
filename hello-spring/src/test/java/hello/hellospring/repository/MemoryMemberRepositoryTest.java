@@ -13,7 +13,8 @@ import static org.assertj.core.api.Assertions.*;
 public class MemoryMemberRepositoryTest {
     MemoryMemberRepository repository=new MemoryMemberRepository();
 
-    //테스트는 순서 의존관계 없이 설계 되어야함 그러기 위해선 하나의 테스트가 끝나면 공용데이터를 지워줘야 문제가 없다.
+//    테스트는 순서 의존관계 없이 설계 되어야함 그러기 위해선 하나의 테스트가 끝나면 공용데이터를 지워줘야 테스트에 문제가 없다.
+//    AfterEach: 메서드가 실행 끝날때마다 실행하는 메소드, 콜백메소드임
     @AfterEach
     public void afterEach(){
         repository.clearStore();
@@ -27,10 +28,8 @@ public class MemoryMemberRepositoryTest {
 
         Member result = repository.findById(member.getId()).get();
         assertThat(member).isEqualTo(result); //member가 result와 똑같다.
-
     }
     @Test
-
     public void findByName() {
         //given
         Member member1 = new Member();
@@ -47,7 +46,7 @@ public class MemoryMemberRepositoryTest {
     }
     @Test
     public void findAll(){
-        Member member1 = new Member();
+        Member member1  = new Member();
         member1.setName("spring1");
         repository.save(member1);
 
@@ -57,7 +56,5 @@ public class MemoryMemberRepositoryTest {
 
         List<Member> result =repository.findAll();
         assertThat(result.size()).isEqualTo(2);
-
-
     }
 }
