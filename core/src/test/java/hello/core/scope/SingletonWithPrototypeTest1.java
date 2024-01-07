@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 
-import javax.inject.Provider;
+import jakarta.inject.Provider;
 
 public class SingletonWithPrototypeTest1 {
 
