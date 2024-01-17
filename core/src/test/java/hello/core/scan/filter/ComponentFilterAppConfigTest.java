@@ -18,7 +18,10 @@ public class ComponentFilterAppConfigTest {
                 AnnotationConfigApplicationContext(ComponentFilterAppConfig.class);
         BeanA beanA = ac.getBean("beanA", BeanA.class);
         assertThat(beanA).isNotNull();
-        Assertions.assertThrows(
+
+        //BeanB가 없다는 것을 보여주기 위한 테스트
+        //BeanB가 없다면 테스트 통과
+       Assertions.assertThrows(
                 NoSuchBeanDefinitionException.class,
                 () -> ac.getBean("beanB", BeanB.class));
     }
