@@ -24,4 +24,6 @@ public class Member {
     @OneToMany(mappedBy = "member") //Order테이블에 있는 member와 맵핑이 된거다.(연관관계의 주인이 아님)
     private List<Order> orders =new ArrayList<Order>();
 
+
+
 }
