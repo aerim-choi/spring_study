@@ -4,14 +4,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository //스프링 빈으로 등록됨(컴포넌트 스캔의 대상임)
+@RequiredArgsConstructor
 public class MemberRepository {
-    @PersistenceContext //스프링이 JPA앤티티 매니저를 자동으로 주입해줌
-    private EntityManager em;
+
+    private final EntityManager em;
 
     public void save(Member member){
         em.persist(member);
