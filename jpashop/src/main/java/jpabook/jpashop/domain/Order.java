@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -12,6 +14,7 @@ import java.util.List;
 @Table(name="orders")
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED) //생성자로 직접 생성하면 안되고 다른 메서드를 이용해야하구나! 를 알려줌
 public class Order {
     @Id
     @GeneratedValue
