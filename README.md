@@ -3,6 +3,10 @@
 1. https://www.inflearn.com/course/스프링-입문-스프링부트
 2. https://www.inflearn.com/course/스프링-핵심-원리-기본편#curriculum
 3. https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-%ED%99%9C%EC%9A%A9-1#curriculum
+4. https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-API%EA%B0%9C%EB%B0%9C-%EC%84%B1%EB%8A%A5%EC%B5%9C%EC%A0%81%ED%99%94
+### 😇 활동 기록 :
+- Notion : https://oxidized-walrus-86b.notion.site/dd590081dab6435b911dcf1348deb087?v=13b90521acbc4d309687108e3468b1c1&pvs=4
+
 ### 🧐 활동 회고 : 
 - 9월 ~ 10월 : https://gdsc-sungshin.tistory.com/3
 - 11월 : https://gdsc-sungshin.tistory.com/17
@@ -38,7 +42,7 @@
 </tr>
 </thead>
 <table>  
-3기  
+3기 (2024.03.05 ~ ing)
 <thead>
 <tr>
 <th align="center">김나은</th>
