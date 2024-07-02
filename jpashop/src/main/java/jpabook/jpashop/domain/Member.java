@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Member {
     private Address address;
 
     @OneToMany(mappedBy = "member") //Order테이블에 있는 member와 맵핑이 된거다.(연관관계의 주인이 아님)
+    @JsonIgnore
     private List<Order> orders =new ArrayList<Order>();
 
 
