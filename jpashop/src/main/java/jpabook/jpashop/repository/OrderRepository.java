@@ -98,6 +98,16 @@ public class OrderRepository {
     }
 
 
-
-
+    public List<Order> findAllWithItem() {
+        //문제점: order(1)와 orderItem(N)을 join을 해서 order의 수가 뻥튀기가 되어버림 총 row수가 4개가 됨
+        //해결방법 : select distinct를 넣어준다. db쿼리에 distinct를 추가해주고, JPA에서는 Order의 객체의 id가 같으면 중복을 제거해주기 때문이다.
+        //단점 : 1대다(order와 orderItem) 관계에서 페치조인하면 페이징이 되지 않는다.
+        return em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d" +
+                        " join fetch o.orderItems oi" +
+                        " join fetch oi.item i",Order.class)
+                .getResultList();
+    }
 }

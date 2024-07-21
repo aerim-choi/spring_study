@@ -41,6 +41,15 @@ public class OrderApiController {
         return result;
     }
 
+    @GetMapping("/api/v3/orders")
+    public List<OrderDto> ordersV3() {
+        List<Order> orders = orderRepository.findAllWithItem();
+        List<OrderDto> result = orders.stream()
+                .map(o->new OrderDto(o))
+                .collect(Collectors.toList());
+        return result;
+    }
+
 
     @Getter
     static class OrderDto{
@@ -57,6 +66,7 @@ public class OrderApiController {
             orderDate = order.getOrderDate();
             orderStatus = order.getStatus();
             address = order.getDelivery().getAddress();
+            //lazyloading때문에 다른 책을 주문했을 경우 계속 쿼리날려서 성능 저하 문제
             orderItems = order.getOrderItems().stream()
                     .map(orderItem -> new OrderItemDto(orderItem))
                     .collect(Collectors.toList());
