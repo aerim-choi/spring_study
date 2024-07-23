@@ -97,6 +97,16 @@ public class OrderRepository {
         ).getResultList();
     }
 
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class)
+        .setFirstResult(offset)
+        .setMaxResults(limit)
+        .getResultList();
+    }
+
 
     public List<Order> findAllWithItem() {
         //문제점: order(1)와 orderItem(N)을 join을 해서 order의 수가 뻥튀기가 되어버림 총 row수가 4개가 됨
