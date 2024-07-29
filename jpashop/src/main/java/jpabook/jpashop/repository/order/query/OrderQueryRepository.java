@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class OrderQueryRepository {
     private final EntityManager em;
 
-    public List<OrderQueryDto> findOrderQueryDtos() {
+    public List<OrderQueryDto> findOrderQueryDto() {
         // 루트 조회(toOne 코드를 모두 한번에 조회)
         List<OrderQueryDto> result = findOrders(); //Query 1번 -> N개
 
@@ -47,7 +47,7 @@ public class OrderQueryRepository {
                 .getResultList();
     }
 
-    public List<OrderQueryDto> findOrderQueryDtos_optimizition() {
+    public List<OrderQueryDto> findOrderQueryDto_optimizition() {
 
         List<OrderQueryDto> result = findOrders();
 
@@ -80,6 +80,18 @@ public class OrderQueryRepository {
                 .map(o->o.getOrderId())
                 .collect(Collectors.toList());
         return orderIds;
+    }
+
+    public List<OrderFlatDto> findOrderQueryDto_flat() {
+        return em.createQuery(
+                "select new jpabook.jpashop.repository.order.query.OrderFlatDto(o.id, m.name, o.orderDate, o.status, d.address, i.name, oi.orderPrice, oi.count)" +
+                " from Order o" +
+                " join o.member m" +
+                " join o.delivery d" +
+                " join o.orderItems oi" +
+                " join oi.item i", OrderFlatDto.class)
+            .getResultList();
+
     }
 
     //핵심 비즈니스를 위해서 엔티티를 찾을 땐 OrderRepository를 찾고 화면에 핏한 엔티티가 아닌 것을 찾을 떈 쿼리레포지토리에서 찾기
